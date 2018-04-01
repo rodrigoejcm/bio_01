@@ -2,9 +2,6 @@ import pandas as pd
 import math
 import bio01_api as napi
 
-#pp = pprint.PrettyPrinter(indent=4)
-
-
 import warnings
 warnings.filterwarnings('ignore')
 

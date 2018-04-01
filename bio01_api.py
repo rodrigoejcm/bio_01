@@ -2,8 +2,6 @@ import requests
 import time ### TIME STOP
 import sys
 
-pp = pprint.PrettyPrinter(indent=4)
-
 def pairwise_align_needle_api(s1, s2, smatrix, dna):
 
     mtx = define_matrix(smatrix)
