@@ -1,10 +1,8 @@
-import numpy as np
 import pandas as pd
 import math
-import pprint ### PRETY PRINT
 import bio01_api as napi
 
-pp = pprint.PrettyPrinter(indent=4)
+#pp = pprint.PrettyPrinter(indent=4)
 
 
 import warnings
@@ -57,8 +55,6 @@ def pairwise_align_needle(seq1,seq2,smatrix,api,dna):
 
         ## print(GC)
         ##GC.to_csv('example.csv')
-
-
 
         i = row-1
         j = col-1

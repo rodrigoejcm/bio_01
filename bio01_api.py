@@ -1,5 +1,4 @@
 import requests
-import pprint ### PRETY PRINT
 import time ### TIME STOP
 import sys
 
@@ -8,8 +7,6 @@ pp = pprint.PrettyPrinter(indent=4)
 def pairwise_align_needle_api(s1, s2, smatrix, dna):
 
     mtx = define_matrix(smatrix)
-
-    ## VALIDAR COM AS SMARIX DISPONIVEIS e gerar a var matrix
 
     GAP_COST = 100
     GAP_EXT = 0.0005
@@ -33,13 +30,9 @@ def pairwise_align_needle_api(s1, s2, smatrix, dna):
     try:
 
 
-        sys.stdout.write("Conectando API....\n")
+        sys.stdout.write("Conectando API....\n\n")
 
         req = requests.post(url, headers=headers, params=data_info)
-
-
-
-
 
         req.raise_for_status() ## Erro se o status code fro diferente de 200
 
@@ -65,7 +58,7 @@ def pairwise_align_needle_api(s1, s2, smatrix, dna):
 
 
                 resultado_final_lines = resultado_final.splitlines()
-                #pp.pprint(resultado_final_lines)
+
                 resultado = {}
                 i=1
                 resultado['Seq_1'] = ''
@@ -89,9 +82,6 @@ def pairwise_align_needle_api(s1, s2, smatrix, dna):
                             resultado['Seq_2'] =resultado['Seq_2'] + (line[21:]).split("     ")[0]
                         i += 1
 
-
-
-                #pp.pprint(resultado)
 
                 print("--- EMBOSS API---")
                 print("Gap cost {}".format(GAP_COST))
