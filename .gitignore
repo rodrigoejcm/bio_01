@@ -2,7 +2,7 @@ source/
 .ipynb_checkpoints/
 .ipynb_checkpoints
 __pycache__
-
+bio01_api.pyc
 
 .*
 !/.gitignore
