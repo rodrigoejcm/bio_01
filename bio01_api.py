@@ -1,6 +1,8 @@
 import requests
 import time ### TIME STOP
 import sys
+import textwrap
+
 
 def pairwise_align_needle_api(s1, s2, smatrix, dna):
 
@@ -85,9 +87,21 @@ def pairwise_align_needle_api(s1, s2, smatrix, dna):
                 print("Gap cost {}".format(GAP_COST))
                 print("Score Matrix {}".format(smatrix))
                 print("Score {}".format(resultado['Score']))
-                print(resultado['Seq_1'])
-                print(resultado['Seq_2'])
-                print("\n")
+                #print(resultado['Seq_1'])
+                #print(resultado['Seq_2'])
+                result1 = ''.join(i for i in resultado['Seq_1'] if not i.isdigit())
+                result1 = result1.strip()
+                result1 = result1.replace(" ", "")
+
+                result2 = ''.join(i for i in resultado['Seq_2'] if not i.isdigit())
+                result2 = result2.strip()
+                result2 = result2.replace(" ", "")
+
+
+                textwrap.wrap(result1, width=100)
+                print(textwrap.fill(result1, width=100))
+                textwrap.wrap(result2, width=100)
+                print(textwrap.fill(result2, width=100))
 
             except requests.exceptions.HTTPError as err:
                 print(err)

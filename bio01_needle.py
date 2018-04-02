@@ -1,6 +1,7 @@
 import pandas as pd
 import math
 import bio01_api as napi
+import textwrap
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -26,7 +27,6 @@ def pairwise_align_needle(seq1,seq2,smatrix,api,dna):
         for j in range(0, len(SEQ_2)):
                 GA.iloc[j, 0]=[j*GAP_COST, 'TD']
 
-        #print(GA)
 
         GC = GA.copy()
         row = GC.shape[0]
@@ -43,14 +43,13 @@ def pairwise_align_needle(seq1,seq2,smatrix,api,dna):
                         TD = GC.iloc[i -1,j][0] + GAP_COST
                         #LEFT RIGHT
                         LR = GC.iloc[i ,j - 1][0] + GAP_COST
-                        # DIAGONA
+                        # DIAGONAL
                         DD = GC.iloc[i -1,j - 1][0] + cost
 
                         ops = {'DD': DD, 'LR': LR, 'TD': TD  }
 
                         GC.iloc[i,j] = [ max(ops.values()) , max(ops, key=ops.get)]
 
-        ## print(GC)
         ##GC.to_csv('example.csv')
 
         i = row-1
@@ -94,8 +93,10 @@ def pairwise_align_needle(seq1,seq2,smatrix,api,dna):
         print("Score Matrix {}".format(smatrix))
         print("Score {}".format(score))
 
-        print(align_x[::-1])
-        print(align_y[::-1])
+        textwrap.wrap(align_x[::-1], width=100)
+        print(textwrap.fill(align_x[::-1], width=100))
+        textwrap.wrap(align_y[::-1], width=100)
+        print(textwrap.fill(align_y[::-1], width=100))
 
         ## if api is set....
         if api:
